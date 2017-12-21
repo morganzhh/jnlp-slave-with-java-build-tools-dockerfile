@@ -2,6 +2,13 @@ FROM cloudbees/java-build-tools
 
 USER root
 
+#change start
+RUN apt-get update -qqy \
+  && apt-get -qqy --no-install-recommends install \
+    rpm \
+    file
+#change end
+
 ARG JENKINS_REMOTING_VERSION=3.12
 
 # See https://github.com/jenkinsci/docker-slave/blob/2.62/Dockerfile#L32
