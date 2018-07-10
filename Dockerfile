@@ -9,9 +9,9 @@ RUN apt-get update -qqy \
     file
 #change end
 
-ARG JENKINS_REMOTING_VERSION=3.12
+ARG JENKINS_REMOTING_VERSION=3.23
 
-# See https://github.com/jenkinsci/docker-slave/blob/2.62/Dockerfile#L32
+# See https://github.com/jenkinsci/docker-slave/blob/master/Dockerfile#L31
 RUN curl --create-dirs -sSLo /usr/share/jenkins/slave.jar https://repo.jenkins-ci.org/public/org/jenkins-ci/main/remoting/$JENKINS_REMOTING_VERSION/remoting-$JENKINS_REMOTING_VERSION.jar \
   && chmod 755 /usr/share/jenkins \
   && chmod 644 /usr/share/jenkins/slave.jar
