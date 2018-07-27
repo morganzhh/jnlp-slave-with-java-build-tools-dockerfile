@@ -5,6 +5,10 @@ USER root
 #change start
 RUN apt-get update -qqy \
   && apt-get -qqy --no-install-recommends install \
+    apt-utils \
+    libprotoc-dev \
+    protobuf-compiler \
+    libprotobuf-java \
     rpm \
     file
 #change end
