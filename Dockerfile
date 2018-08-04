@@ -22,6 +22,9 @@ RUN curl --create-dirs -sSLo /usr/share/jenkins/slave.jar https://repo.jenkins-c
 
 COPY jenkins-slave /usr/local/bin/jenkins-slave
 
+#Maven requires java executable in /bin, create a soft link
+RUN ln -s /usr/bin/java /bin/java
+
 RUN chmod a+rwx /home/jenkins
 WORKDIR /home/jenkins
 USER jenkins
