@@ -10,8 +10,19 @@ RUN apt-get update -qqy \
     protobuf-compiler \
     libprotobuf-java \
     rpm \
+    docker \
+    gradle \
     file
 #change end
+
+#DOCKER
+RUN curl -fsSL https://get.docker.com -o get-docker.sh
+RUN sh get-docker.sh
+RUN usermod -aG docker jenkins
+VOLUME /var/run/docker.sock
+RUN groupmod -g 992 docker
+
+RUN npm install -g bower
 
 ARG JENKINS_REMOTING_VERSION=3.23
 
@@ -30,3 +41,4 @@ WORKDIR /home/jenkins
 USER jenkins
 
 ENTRYPOINT ["/opt/bin/entry_point.sh", "/usr/local/bin/jenkins-slave"]
+
